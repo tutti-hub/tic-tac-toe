@@ -1,0 +1,22 @@
+:root {
+    font-size: 10px;
+    font-family: sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    background-color: rgba(250, 200, 0, 0.2);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.board {
+    width: 400px;
+    height: 400px;
+    border: 1px solid grey;
+}
