@@ -15,7 +15,10 @@ function createGame(player1, player2, activePlayer) {
 
 	const nextPlayer = () => (_activePlayer === _player1 ? _player2 : _player1);
 
+	const isGameOver = () => _winner || !_board.hasEmptyCells;
+
 	const doTurn = (index) => {
+		if (isGameOver()) throw new Error('this game is over');
 		_board.setCellMarker(index, _activePlayer.getMarker());
 		const gotLine = _board.gotLine(_activePlayer.getMarker());
 		if (gotLine) {
@@ -23,11 +26,12 @@ function createGame(player1, player2, activePlayer) {
 		} else {
 			_activePlayer = nextPlayer();
 		}
+		return _activePlayer;
 	};
 
 	const getWinner = () => _winner;
 
-	return { getActivePlayer, doTurn, getWinner };
+	return { getActivePlayer, doTurn, isGameOver, getWinner };
 }
 
 export { createGame };

@@ -1,11 +1,13 @@
-import { createBoard } from './board.js';
 import { createGame } from './game.js';
 import { createPlayer } from './player.js';
 
 let player1 = createPlayer('Player One', 'X');
 let player2 = createPlayer('Player Two', 'O');
-console.log(player1.getName());
 
-let board = createBoard();
 let game = createGame(player1, player2);
-console.log(game.getActivePlayer().getName());
+[0, 1, 2].forEach((e) => {
+	console.log(game.getActivePlayer().getName(), player1.getName());
+	game.doTurn(e);
+	console.log(game.getActivePlayer().getName(), player2.getName());
+	game.doTurn(e + 3);
+});
