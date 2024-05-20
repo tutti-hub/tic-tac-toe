@@ -1,5 +1,5 @@
-import { createGame } from './game.js';
-import { createPlayer } from './player.js';
+import { createGame } from './model/game.js';
+import { createPlayer } from './model/player.js';
 
 let player1 = createPlayer('Player One', 'X');
 let player2 = createPlayer('Player Two', 'O');
@@ -23,6 +23,5 @@ board.addEventListener('click', (e) => {
 				: `GameOver. It's draw!`;
 			controlPanel.innerText = result;
 		}
-	} else if (game.isGameOver()) {
 	}
 });

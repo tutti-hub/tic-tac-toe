@@ -1,4 +1,4 @@
-import { createBoard } from './board.js';
+import { createBoard } from '../model/board.js';
 
 let board;
 

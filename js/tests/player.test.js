@@ -1,4 +1,4 @@
-import { createPlayer } from './player.js';
+import { createPlayer } from '../model/player.js';
 
 test('create player with name and marker', () => {
 	const expectedName = 'Steve';

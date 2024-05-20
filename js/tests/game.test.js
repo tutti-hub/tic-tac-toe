@@ -1,5 +1,5 @@
-import { createGame } from './game.js';
-import { createPlayer } from './player.js';
+import { createGame } from '../model/game.js';
+import { createPlayer } from '../model/player.js';
 
 const player1 = createPlayer('player1', 'X');
 const player2 = createPlayer('player2', 'O');
