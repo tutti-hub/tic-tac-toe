@@ -4,10 +4,25 @@ import { createPlayer } from './player.js';
 let player1 = createPlayer('Player One', 'X');
 let player2 = createPlayer('Player Two', 'O');
 
-let game = createGame(player1, player2);
-[0, 1, 2].forEach((e) => {
-	console.log(game.getActivePlayer().getName(), player1.getName());
-	game.doTurn(e);
-	console.log(game.getActivePlayer().getName(), player2.getName());
-	game.doTurn(e + 3);
+let game = createGame(player1, player2, player1);
+
+const controlPanel = document.querySelector('.control-panel');
+const board = document.querySelector('.board');
+const info = document.querySelector('.info');
+
+controlPanel.innerText = game.getActivePlayer().getName();
+board.addEventListener('click', (e) => {
+	if (!game.isGameOver() && e.target.classList.contains('cell-empty')) {
+		e.target.innerText = game.getActivePlayer().getMarker();
+		game.doTurn(e.target.dataset.index);
+		e.target.classList.remove('cell-empty');
+		controlPanel.innerText = game.getActivePlayer().getName();
+		if (game.isGameOver()) {
+			const result = game.getWinner()
+				? `Game Over. ${game.getWinner().getName()} wins!`
+				: `GameOver. It's draw!`;
+			controlPanel.innerText = result;
+		}
+	} else if (game.isGameOver()) {
+	}
 });
