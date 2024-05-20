@@ -24,6 +24,8 @@ function createBoard(size = 9) {
 
 	const setCellMarker = (index, marker) => {
 		if (index === undefined) throw new Error('index is undefined');
+		if (index < 0 || index > getBoardSize() - 1)
+			throw new Error('index out of range');
 		if (marker === undefined) throw new Error('marker is undefined');
 		if (_cells[index] !== _emptyCell) throw new Error('cell is not empty');
 

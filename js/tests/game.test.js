@@ -43,3 +43,17 @@ test('throws game over', () => {
 
 	expect(emulateGame).toThrow('this game is over');
 });
+
+test('when draw isGameOver gets true', () => {
+	game.doTurn(0);
+	game.doTurn(4);
+	game.doTurn(8);
+	game.doTurn(2);
+	game.doTurn(6);
+	game.doTurn(3);
+	game.doTurn(5);
+	game.doTurn(7);
+	game.doTurn(1);
+	expect(game.getWinner()).toBeUndefined();
+	expect(game.isGameOver()).toBeTruthy();
+});

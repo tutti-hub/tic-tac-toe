@@ -33,6 +33,14 @@ test('undefined index for setCellMarker() throws error', () => {
 	expect(testIndex).toThrow('index is undefined');
 });
 
+test('index out of range', () => {
+	const throw1 = () => board.setCellMarker(-1);
+	const throw2 = () => board.setCellMarker(9);
+	const err = 'index out of range';
+	expect(throw1).toThrow(err);
+	expect(throw2).toThrow(err);
+});
+
 test('undefined marker for setCellMarker() throws error', () => {
 	const testMarker = () => board.setCellMarker(1);
 	expect(testMarker).toThrow('marker is undefined');

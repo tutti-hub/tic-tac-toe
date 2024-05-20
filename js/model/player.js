@@ -4,6 +4,6 @@ export function createPlayer(name, marker) {
 
 	const getMarker = () => _marker;
 	const getName = () => _name;
-	const toString = () => `Player: {name: ${_name}, marker: ${_marker}}`;
-	return { getName, getMarker, toString };
+	const info = () => `${_name}: ${_marker}`;
+	return { getName, getMarker, info };
 }
