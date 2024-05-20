@@ -13,12 +13,12 @@ const newGameBtn = document.querySelector('#new-game-btn');
 const control = document.querySelector('.control');
 
 const dialog = document.querySelector('dialog');
-const gamesCountTitle = document.querySelector('#games-count-title');
-const gamesCountValue = document.querySelector('#games-count-value');
+const totalGamesValue = document.querySelector('#total-games-value');
 const player1Title = document.querySelector('#player1-title');
 const player1Value = document.querySelector('#player1-value');
 const player2Title = document.querySelector('#player2-title');
 const player2Value = document.querySelector('#player2-value');
+const drawGamesValue = document.querySelector('#draw-games-value');
 
 newGameBtn.addEventListener('click', (e) => {
 	currentGame = createGame(player1, player2, player1);
@@ -51,28 +51,34 @@ board.addEventListener('click', (e) => {
 			info.innerText = result;
 			games.push(currentGame);
 			control.classList.remove('hidden');
-			console.log(winner.line);
-			winner.line.forEach((e) => {
-				document
-					.querySelector('.cell[data-index="' + e + '"]')
-					.classList.add('win');
-			});
+			if (winner) {
+				winner.line.forEach((e) => {
+					document
+						.querySelector('.cell[data-index="' + e + '"]')
+						.classList.add('win');
+				});
+			}
 			showStatistics();
 		}
 	}
 });
 
 function showStatistics() {
-	const player1Wins = games.filter((g) => g.getWinner() == player1).length;
-	const player2Wins = games.filter((g) => g.getWinner() == player2).length;
+	const player1Wins = games.filter(
+		(g) => g.getWinner() && g.getWinner().winner == player1
+	).length;
+	const player2Wins = games.filter(
+		(g) => g.getWinner() && g.getWinner().winner == player2
+	).length;
 	const msg = `Games count: ${games.length}\n
 	${player1.getName()} wins: ${player1Wins} times\n
 	${player2.getName()} wins: ${player2Wins} times\n`;
 	console.log(msg);
-	gamesCountValue.innerText = games.length;
+	totalGamesValue.innerText = games.length;
 	player1Title.innerText = player1.getName() + ':';
 	player1Value.innerText = player1Wins + ' wins';
 	player2Title.innerText = player2.getName() + ':';
 	player2Value.innerText = player2Wins + ' wins';
+	drawGamesValue.innerText = games.length - player1Wins - player2Wins;
 	dialog.showModal();
 }
