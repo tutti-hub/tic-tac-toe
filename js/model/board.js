@@ -37,7 +37,7 @@ function createBoard(size = 9) {
 		for (let line of _lines) {
 			const checkCells = _cells.filter((e, i) => line.includes(i));
 			if (checkCells.length && checkCells.every(equal)) {
-				return true;
+				return { gotLine: true, line: line };
 			}
 		}
 		return false;

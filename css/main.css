@@ -103,5 +103,6 @@ dialog > div > div:nth-child(odd) {
 	text-align: right;
 }
 
-dialog > div > div:nth-child(even) {
+.win {
+	background-color: green;
 }

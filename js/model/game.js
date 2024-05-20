@@ -21,8 +21,8 @@ function createGame(player1, player2, activePlayer) {
 		if (isGameOver()) throw new Error('this game is over');
 		_board.setCellMarker(index, _activePlayer.getMarker());
 		const gotLine = _board.gotLine(_activePlayer.getMarker());
-		if (gotLine) {
-			_winner = _activePlayer;
+		if (gotLine.gotLine) {
+			_winner = { winner: _activePlayer, line: gotLine.line };
 		} else {
 			_activePlayer = nextPlayer();
 		}

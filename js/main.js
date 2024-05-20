@@ -28,6 +28,7 @@ newGameBtn.addEventListener('click', (e) => {
 	document.querySelectorAll('.cell').forEach((cell) => {
 		cell.innerText = '';
 		cell.classList.add('cell-empty');
+		cell.classList.remove('win');
 	});
 });
 
@@ -42,15 +43,20 @@ board.addEventListener('click', (e) => {
 
 		info.innerText = currentGame.getActivePlayer().info();
 		if (currentGame.isGameOver()) {
-			console.log('winner: ', currentGame.getWinner());
-
+			const winner = currentGame.getWinner();
 			const result =
-				currentGame.getWinner() !== undefined
-					? `Game Over. ${currentGame.getWinner().info()} wins!`
+				winner !== undefined
+					? `Game Over. ${winner.winner.info()} wins!`
 					: `GameOver. It's draw!`;
 			info.innerText = result;
 			games.push(currentGame);
 			control.classList.remove('hidden');
+			console.log(winner.line);
+			winner.line.forEach((e) => {
+				document
+					.querySelector('.cell[data-index="' + e + '"]')
+					.classList.add('win');
+			});
 			showStatistics();
 		}
 	}
