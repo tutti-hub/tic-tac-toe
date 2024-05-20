@@ -12,6 +12,14 @@ const info = document.querySelector('.info');
 const newGameBtn = document.querySelector('#new-game-btn');
 const control = document.querySelector('.control');
 
+const dialog = document.querySelector('dialog');
+const gamesCountTitle = document.querySelector('#games-count-title');
+const gamesCountValue = document.querySelector('#games-count-value');
+const player1Title = document.querySelector('#player1-title');
+const player1Value = document.querySelector('#player1-value');
+const player2Title = document.querySelector('#player2-title');
+const player2Value = document.querySelector('#player2-value');
+
 newGameBtn.addEventListener('click', (e) => {
 	currentGame = createGame(player1, player2, player1);
 	info.innerText = currentGame.getActivePlayer().info();
@@ -54,6 +62,11 @@ function showStatistics() {
 	const msg = `Games count: ${games.length}\n
 	${player1.getName()} wins: ${player1Wins} times\n
 	${player2.getName()} wins: ${player2Wins} times\n`;
-	alert(msg);
 	console.log(msg);
+	gamesCountValue.innerText = games.length;
+	player1Title.innerText = player1.getName() + ':';
+	player1Value.innerText = player1Wins + ' wins';
+	player2Title.innerText = player2.getName() + ':';
+	player2Value.innerText = player2Wins + ' wins';
+	dialog.showModal();
 }
