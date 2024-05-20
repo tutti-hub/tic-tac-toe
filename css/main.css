@@ -1,6 +1,7 @@
 :root {
 	font-size: 10px;
 	font-family: sans-serif;
+	--bg-color: rgba(250, 200, 0, 0.2);
 }
 
 body {
@@ -12,7 +13,7 @@ body {
 }
 
 .container {
-	background-color: rgba(250, 200, 0, 0.2);
+	background-color: var(--bg-color);
 	height: 100vh;
 	display: flex;
 	justify-content: center;
@@ -50,8 +51,34 @@ body {
 	cursor: pointer;
 }
 
-.control-panel {
-	font-size: 4rem;
+.info {
+	font-size: 3rem;
 	margin-bottom: 1rem;
 	color: grey;
+}
+
+.hidden {
+	display: none;
+}
+
+.control {
+	margin-top: 2rem;
+}
+
+#new-game-btn {
+	font-size: 3rem;
+	text-transform: uppercase;
+	padding: 1rem 2rem;
+	background-color: grey;
+	color: white;
+	border: none;
+	cursor: pointer;
+	border-radius: 4px;
+
+	transition: 0.3s;
+}
+
+#new-game-btn:hover {
+	scale: 1.05;
+	box-shadow: 0 0 10px 1px grey;
 }
